@@ -1,3 +1,10 @@
+body{
+  text-align: center;
+  background-color: lightpink;
+}
+ul{
+  list-style-type: none;
+}
 .App {
   text-align: center;
 }
@@ -6,7 +13,10 @@
   height: 40vmin;
   pointer-events: none;
 }
-
+#root h1 {
+  color: green;
+  border:solid gray;
+}
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
     animation: App-logo-spin infinite 20s linear;

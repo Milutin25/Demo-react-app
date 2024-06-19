@@ -1,3 +1,6 @@
+import React from 'react';
+import './App.css';
+
 export default function App() {
 
   const movieData = {
@@ -104,40 +107,26 @@ export default function App() {
     ],
   };
 
-
-  const movieTitles = [];
-  const movieAwards = [];
-
-  for (let i in movieData.movies) {
-    const movie = movieData.movies[i];
-    movieTitles.push(movie.title);
-
-    for (let j in movie.cast) {
-      const movieCast = movie.cast[j];
-      if (movieCast.awards.length > 0) {
-        movieAwards.push(movieCast.awards);
-      }
-    }
-  }
-
   return (
     <div>
-      <h1>Movie Titles</h1>
-      <ul>
-        {movieTitles.map((title, index) => (
-          <li key={index}>{title}</li>
-        ))}
-      </ul>
-      
-      <h1>Movie Awards</h1>
-      <ul>
-        {movieAwards.map((award, index) => (
-          <li key={index}>{award}</li>
-        ))}
-      </ul>
+      <h1>Movies and Awards</h1>
+      {movieData.movies.map((movie, movieIndex) => (
+        <div key={movieIndex}>
+          <h2>{movie.title}</h2>
+          <h3>Awards:</h3>
+          <ul>
+            {movie.cast.map((castMember, castIndex) => {
+              if (castMember.awards.length > 0) {
+                return castMember.awards.map((award, awardIndex) => (
+                  <li key={awardIndex}>{award}</li>
+                ));
+              } else {
+                return null; 
+              }
+            })}
+          </ul>
+        </div>
+      ))}
     </div>
   );
 }
-
-
-
